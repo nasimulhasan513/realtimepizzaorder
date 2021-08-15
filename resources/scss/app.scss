@@ -1,5 +1,6 @@
 @import './variables';
-
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
 
 body {
     font-family: 'Lato', sans-serif;
@@ -61,6 +62,10 @@ section.cart {
     .amount {
         color: $primary;
     }
+
+    &:focus {
+        outline: none;
+    }
 }
 
 section.login {
@@ -74,4 +79,9 @@ section.login {
         }
 
     }
+}
+
+.noty_theme__mint {
+    border-radius: 50px !important;
+    padding-left: 8px !important;
 }
