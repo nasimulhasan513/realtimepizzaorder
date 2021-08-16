@@ -19,7 +19,7 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      default: "customSchedulerFn",
+      default: "customer",
     },
   },
   { timestamps: true }
