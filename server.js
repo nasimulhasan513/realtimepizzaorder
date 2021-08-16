@@ -7,6 +7,7 @@ const routes = require("./routes/web");
 const session = require("express-session");
 const flash = require("express-flash");
 const MongoDbStore = require("connect-mongo");
+const passport = require("passport");
 
 const app = express();
 
@@ -29,6 +30,7 @@ connection
   .catch((err) => {
     console.log("connection error");
   });
+
 // session store
 let mongoStore = MongoDbStore.create({
   mongoUrl: url,
@@ -46,15 +48,23 @@ app.use(
   })
 );
 
+// passport configuration
+const passportConfig = require("./app/config/passport");
+passportConfig(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Global Middleware
 app.use((req, res, next) => {
   res.locals.session = req.session;
+  res.locals.user = req.user;
   next();
 });
 
 app.use(flash());
 app.use(express.static("public"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(expressjslayouts);
 app.set("views", path.join(__dirname, "/resources/view"));
 app.set("view engine", "ejs");

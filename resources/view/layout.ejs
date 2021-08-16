@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Real Time Pizza App</title>
-  
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -23,11 +23,22 @@
             <ul class="flex items-center">
                 <li class="ml-6"><a href="/">Menu</a></li>
                 <li class="ml-6"><a href="#">Offers</a></li>
+                <% if(user){ %>
+                <li class="ml-6">
+                    <form action="/logout" id="logout" method="POST">
+                        <a onclick="document.getElementById('logout').submit();" href="#">Logout</a>
+                    </form>
+                </li>
+                <% }else{ %>
                 <li class="ml-6"><a href="/register">Register</a></li>
-                <li class="ml-6"><a href="/login">Login</a></li>
+                <li class="ml-6">
+                    <a href="/login">Login</a>
+
+                </li>
+                <%}%>
                 <li class="ml-6 inline-block px-4 py-2 rounded-full">
-                    <a href="/cart" class=" flex items-center"> <span id="cartCounter" class="text-white font-bold pr-2"><%=session.cart?.totalQty%></span></span> <img src="/img/cart.png"
-                            alt="Cart"></a></li>
+                    <a href="/cart" class=" flex items-center"> <span id="cartCounter" class="text-white font-bold pr-2"><%=session.cart?.totalQty%></span></span>
+                <img src="/img/cart.png" alt="Cart"></a></li>
             </ul>
         </div>
     </nav>
@@ -36,11 +47,11 @@
 
 
 
-<%-body%>
+    <%-body%>
 
 
 
-        <script src="/js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>

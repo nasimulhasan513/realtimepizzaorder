@@ -7,7 +7,10 @@
       </h2>
      
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">      
+    <form class="mt-8 space-y-6" action="/login" method="POST"> 
+            <%if(messages.error){%>
+         <span class="text-red-500 text-small text-center"><%=messages.error%></span></span>
+         <%}%>     
       <div class="shadow-sm space-y-5">
         <div>
           <label for="email-address" class="sr-only">Email address</label>
