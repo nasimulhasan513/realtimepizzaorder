@@ -14,7 +14,7 @@ const app = express();
 
 // db connection
 
-const url = "mongodb://localhost/pizza";
+const url = process.env.CONNECTION_URL;
 mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -75,6 +75,9 @@ app.set("views", path.join(__dirname, "/resources/view"));
 app.set("view engine", "ejs");
 
 routes(app);
+app.use((req, res) => {
+  res.status(404).render("errors/404");
+});
 
 const PORT = process.env.PORT || 8080;
 

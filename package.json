@@ -7,7 +7,8 @@
   "scripts": {
     "serve": "node server.js",
     "dev": "nodemon server.js",
-    "compile": "npx mix"
+    "compile": "npx mix",
+     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
